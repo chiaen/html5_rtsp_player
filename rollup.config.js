@@ -1,7 +1,5 @@
 import alias from 'rollup-plugin-alias';
 import compiler from '@ampproject/rollup-plugin-closure-compiler';
-import uglify from 'rollup-plugin-uglify';
-import { terser } from 'rollup-plugin-terser';
 
 const path = require('path');
 
@@ -13,9 +11,7 @@ export default {
     },
     sourceMap: true,
     plugins: [
-        terser({
-            mangle: false,
-        }),
+        compiler(),
         alias({
             bp_logger: path.join(__dirname,'node_modules/bp_logger/logger.js'),
             bp_event: path.join(__dirname,'node_modules/bp_event/event.js'),
